@@ -25,6 +25,11 @@
 
 type MyExclude<T, U> = T extends (infer Result) | U ? Result extends U ? never : Result : never
 
+// Better answer
+type MyExclude2<T, U> = T extends U ? never : T
+
+// type Result = ('a' extends 'a' ? never : 'a') | ('b' extends 'a' ? never : 'b') | ('c' extends 'a' ? never : 'c')
+
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 

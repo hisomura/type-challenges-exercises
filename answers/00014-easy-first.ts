@@ -27,6 +27,12 @@
 
 type First<T extends unknown[]> = T extends [] ? never : T[0]
 
+// Better answer
+type First2<T extends any[]> = T['length'] extends 0 ? never : T[0]
+
+// Better answer
+type First3<T extends any[]> = T extends [infer A, ...infer rest] ? A : never
+
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
