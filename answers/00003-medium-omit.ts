@@ -40,6 +40,9 @@ type MyOmit<T, K extends keyof T> =
     [key in  MyExclude<keyof T, K>]: T[key]
   }
 
+// better solution
+// https://github.com/type-challenges/type-challenges/issues/448
+type MyOmitBetter<T, K extends keyof T> = {[P in keyof T as P extends K ? never: P] :T[P]}
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
