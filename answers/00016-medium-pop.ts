@@ -34,6 +34,13 @@ type Pop<T extends any[], CountArray extends any[] = []>
   : T extends [...CountArray, T[CountArray['length']]] ? CountArray
     : Pop<T, [...CountArray, T[CountArray['length']]]>
 
+// My second answer
+type Pop2<T extends any[]> = T extends [...infer A, infer _] ? A : []
+
+// Another answer
+type Pop3<T extends any[]> = T extends [...infer A, infer _] ? A : T
+
+
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 

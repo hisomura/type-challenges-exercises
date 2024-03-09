@@ -35,6 +35,13 @@
 type Last<T extends any[], CountArray extends any[] = []>
   = T['length'] extends [...CountArray, 0]['length'] ? T[CountArray['length']] : Last<T, [...CountArray, 0]>
 
+// Better answer
+// https://github.com/type-challenges/type-challenges/issues/100
+type Last2<T extends any[]> = [any, ...T][T["length"]];
+
+// https://github.com/type-challenges/type-challenges/issues/38
+type Last3<T extends any[]> = T extends [...infer _, infer L] ? L : never
+
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
